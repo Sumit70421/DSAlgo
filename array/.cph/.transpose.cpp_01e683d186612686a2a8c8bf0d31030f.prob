@@ -1,0 +1,1 @@
+{"name":"Local: transpose","url":"c:\\Users\\Sumit\\Desktop\\homeworkFolder\\New folder\\DSAlgo\\array\\transpose.cpp","tests":[{"id":1644153383616,"input":"3 3\n1 2 3\n4 5 6\n7 8 9","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\Sumit\\Desktop\\homeworkFolder\\New folder\\DSAlgo\\array\\transpose.cpp","group":"local","local":true}
