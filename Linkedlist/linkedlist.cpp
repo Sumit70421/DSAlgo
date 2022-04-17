@@ -9,7 +9,7 @@ class node{
     node(int val){
         value = val;
         next = NULL;
-    }
+    };
 
 };
 
@@ -28,7 +28,7 @@ void insertAttail(node* &head,int val){
 void display(node* head){
     node* temp = head;
     if(head==NULL){
-        cout<<head->value;
+        cout<<"EMpty";
     }
     while(temp!=NULL){
         cout<<temp->value<<"->";
@@ -54,10 +54,22 @@ node* reverseLink(node* &head){
     return prev;
 
 }
-
+void makeCycle(node* &head, int pos){
+    node* temp = head;
+    node* startNode;
+    int count =1;
+    while(temp->next!=NULL){
+        if(count==pos){
+            startNode = temp;
+        }
+        temp = temp->next;
+        count++;
+    }
+    temp->next = startNode;
+}
 bool detectCycle(node* &head){
-    node* slow =head;
-    node* fast =head;
+    node* slow = head;
+    node* fast = head;
     while(fast!=NULL && fast->next->next!=NULL){
         slow = slow->next;
         fast = fast->next->next;
@@ -99,6 +111,53 @@ void deleteNode(node* &head,int val){
     temp->next = temp->next->next;
     delete tobe;
 }
+void removeCycle(node* &head){
+    node* slow =head;
+    node* fast = head;
+    do
+    {
+        slow = slow->next;
+        fast = fast->next->next;
+    } while (slow!=fast);
+    
+    fast = head;
+    while(fast->next!=slow->next){
+        fast = fast->next;
+        slow = slow->next;
+    }
+    slow->next = NULL;
+}
+int length(node* head){
+    node* temp = head;
+    int length = 0;
+    do
+    {
+        length++;
+        temp = temp->next;
+    } while (temp!=NULL);
+    return length;
+}
+//1-2-3-4-5-6-7
+//4th guy next = null
+//7th guy next = head
+//shift head to 5th guy
+node* insertKnodes(node* &head, int size , int k){
+    int lastN = size - k;
+    int firstN = size-k+1;
+    node* temp =head;
+    node* lastNode;
+    node* firstNode;
+    int count = 1;
+    while(temp!=NULL){
+        if(count = lastN){
+            lastNode = temp;
+            firstNode = temp->next;
+        }        
+    }
+    temp->next = head;
+    head = firstNode;
+    return firstNode;
+}
 int main(){
     node* head = NULL;
     insertAttail(head,10);
@@ -108,8 +167,16 @@ int main(){
     insertathead(head,3330);
     deleteNode(head,30);
     display(head);
-    node* newHEAD = reverseLink(head);
-    display(newHEAD);
+    // node* newHEAD = reverseLink(head);
+    // display(newHEAD);
+    // makeCycle(head,3);
+    // cout<<detectCycle(head);
+    // removeCycle(head);
+    // cout<<detectCycle(head);
+    int lengthl = length(head);
+    node* hud = insertKnodes(head,lengthl,2);
+    display(hud);
+    // display(head);
     // cout<<search(head,39);
     return 0;
 }
